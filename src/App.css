@@ -1,38 +1,200 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0a0a;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: #141414;
 }
 
-@keyframes App-logo-spin {
+form {
+  display: flex;
+  gap: 0.5em;
+}
+
+input {
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #e50914;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f40612;
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+
+.movie {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie img {
+  width: 100%;
+}
+
+.movie h3 {
+  padding: 0.5em;
+  font-size: 1em;
+  text-align: center;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #111;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 90%;
+}
+
+.modal iframe {
+  width: 80vw;
+  max-width: 800px;
+  height: 45vw;
+  max-height: 450px;
+  border-radius: 10px;
+}
+.modal button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #e50914;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ===== MODAL STYLING ===== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(20, 20, 20, 0.9);
+  border-radius: 12px;
+  padding: 1.5em;
+  max-width: 900px;
+  width: 90%;
+  z-index: 101;
+  color: #fff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-body iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.movie-details {
+  text-align: left;
+  padding: 0 1em;
+}
+
+.movie-details h2 {
+  margin-bottom: 0.5em;
+  color: #e50914;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #e50914;
+}
+
+/* Add smooth fade-in */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .modal-body iframe {
+    height: 250px;
   }
 }
